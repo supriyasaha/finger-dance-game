@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center"
+              android:orientation="vertical"
+              android:padding="10dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="The game start with two players"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@android:drawable/radiobutton_on_background"
+        android:drawablePadding="5dp"
+        android:drawableTint="@android:color/holo_red_dark"
+        android:gravity="center_vertical"
+        android:text="Player 1 is indicated by F1 and RED color"
+        android:textColor="@android:color/black"
+        android:textSize="15sp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@android:drawable/radiobutton_on_background"
+        android:drawablePadding="5dp"
+        android:drawableTint="@android:color/holo_blue_light"
+        android:gravity="center_vertical"
+        android:text="Player 2 is indicated by F2 and BLUE color"
+        android:textColor="@android:color/black"
+        android:textSize="15sp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="RULES"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/totalLimit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@android:drawable/radiobutton_on_background"
+        android:drawablePadding="5dp"
+        android:drawableTint="@android:color/holo_purple"
+        android:gravity="center_vertical"
+        android:text="Each player is allowed to keep only 4 fingers on screen"
+        android:textColor="@android:color/black"
+        android:textSize="15sp"
+        />
+</LinearLayout>

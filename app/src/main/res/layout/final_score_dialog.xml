@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center"
+              android:padding="15dp"
+              android:background="@android:color/background_light"
+              android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvWinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="Player1 WON!!!!!!!!!"
+        android:textSize="25sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="SCORE"
+        android:textColor="@android:color/black"
+        android:textSize="25sp"
+        android:visibility="gone"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tvPlayer1Score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Player 1: 23"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="25sp"
+        android:visibility="gone"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tvPlayer2Score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Player 2: 4"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="25sp"
+        android:visibility="gone"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@android:color/darker_gray"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:textSize="25sp"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:text="OK"/>
+
+</LinearLayout>
