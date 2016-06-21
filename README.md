@@ -1,8 +1,7 @@
 # Finger-dance-game
 
 How to nstall the application:
-
-1)Clone the repository.
+<br/>1)Clone the repository.
 <br/>2)Open the project in Android Studio
 <br/>3)Build the project and run it on your phone
 
@@ -23,11 +22,12 @@ How to nstall the application:
 <br/>3)Stored each cell in a CellView array with a position dx and dy of a n*n matrix grid.
 <br/>4)OnTouch of each view, have used a interface OnToggledListener to comunicate with the main thread to update the UI and generate next random row and random column for the next CellView position from the CellView array.
 <br/>5)On removal of a touch from a view, have used another interface OnTouchRemove to comunicate with the main UI thread and show messages accordingly.
-<br/>6)Each player is a Player Object with field 
-  <br/>-row
-  <br/>-column
-  <br/>-view(current view, the player has his fingers on)
-  <br/>-count(count of the number of fingers that are touching the screen at a particular time for each player).
+<br/>6)Each player is a Player Object to keep track of the player movement through each cell. So there will be two player object throughout the game.
+Player object contains:
+  <br/>-row(current selected cell row postion).
+  <br/>-column(current selected cell column position).
+  <br/>-view(current view, the player has his fingers on).
+  <br/>-count(count of the number of fingers that are touching the screen at a particular time).
   
 
 
