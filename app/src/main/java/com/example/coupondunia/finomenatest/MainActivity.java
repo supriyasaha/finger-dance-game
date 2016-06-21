@@ -18,21 +18,23 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity implements MyView.OnToggledListener, MyView.OnTouchRemove {
+public class MainActivity extends AppCompatActivity implements CellView.OnToggledListener, CellView.OnTouchRemove {
 
     private GridLayout myGridLayout;
-    private MyView[] myViews;
+    private CellView[] myViews; //stores each CellView in position dx and dy for a n*n grid matrix. CellView[dy * numOfCol + dx].
     private int numRows = 5;
     private int numColumns = 5;
+
+    //nex randomly generated row and column ti get the CellView position from the CellView array.
     public int randomROw, randomCol;
     public static Random r = new Random();
-    private MyView newView;
+    private CellView newView;
     private boolean onTouchRemove = false;
     private boolean gameOver = false;
-    int playerNumber = MyView.PLAYER_1;
+    int playerNumber = CellView.PLAYER_1;
     int totalNumberOfTouch;
     Player player1, player2;
-    ArrayList<MyView> highlightedSquare;
+    ArrayList<CellView> highlightedSquare; // to keep track of all the points in a n*n matrix which the user is currently placing his finger at.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,10 +76,10 @@ public class MainActivity extends AppCompatActivity implements MyView.OnToggledL
         }
         showDialog();
 
-        myViews = new MyView[numColumns * numRows];
+        myViews = new CellView[numColumns * numRows];
         for (int yPos = 0; yPos < numRows; yPos++) {
             for (int xPos = 0; xPos < numColumns; xPos++) {
-                MyView tView = new MyView(this, xPos, yPos);
+                CellView tView = new CellView(this, xPos, yPos);
                 tView.setOnToggledListener(this);
                 tView.setOnTouchRemoveListener(this);
                 myViews[yPos * numColumns + xPos] = tView;
@@ -118,10 +120,10 @@ public class MainActivity extends AppCompatActivity implements MyView.OnToggledL
 
 
     @Override
-    public void OnToggled(MyView v, boolean touchOn, int player) {
+    public void OnToggled(CellView v, boolean touchOn, int player) {
 
         highlightedSquare.add(v);
-        if (player == MyView.PLAYER_1) {
+        if (player == CellView.PLAYER_1) {
             player1.row = v.getIdY();
             player1.column = v.getIdX();
             player1.view = v;
@@ -136,7 +138,7 @@ public class MainActivity extends AppCompatActivity implements MyView.OnToggledL
 
         if (!onTouchRemove) {
             if (v.getIdX() == randomCol && v.getIdY() == randomROw) {
-                if (player == MyView.PLAYER_1) {
+                if (player == CellView.PLAYER_1) {
                     player1.count += 1;
                 }
                 else {
@@ -155,11 +157,11 @@ public class MainActivity extends AppCompatActivity implements MyView.OnToggledL
             else {
                 gameOver = true;
                 Toast.makeText(this, "GAME OVER", Toast.LENGTH_SHORT).show();
-                if (playerNumber == MyView.PLAYER_1) {
-                    showFinalScoreDialog(MyView.PLAYER_2, null);
+                if (playerNumber == CellView.PLAYER_1) {
+                    showFinalScoreDialog(CellView.PLAYER_2, null);
                 }
                 else {
-                    showFinalScoreDialog(MyView.PLAYER_1, null);
+                    showFinalScoreDialog(CellView.PLAYER_1, null);
                 }
             }
         }
@@ -174,18 +176,18 @@ public class MainActivity extends AppCompatActivity implements MyView.OnToggledL
         newView.setPlayer(player);
         newView.invalidate();
 
-        if (player == MyView.PLAYER_1) {
-            playerNumber = MyView.PLAYER_2;
+        if (player == CellView.PLAYER_1) {
+            playerNumber = CellView.PLAYER_2;
         }
         else {
-            playerNumber = MyView.PLAYER_1;
+            playerNumber = CellView.PLAYER_1;
         }
     }
 
     @Override
-    public void onTouchRemove(MyView v, MotionEvent touchOff, int player) {
+    public void onTouchRemove(CellView v, MotionEvent touchOff, int player) {
         if (!gameOver && !onTouchRemove) {
-            if (player == MyView.PLAYER_1) {
+            if (player == CellView.PLAYER_1) {
                 if (v.getIdY() == player1.row && v.getIdX() == player1.column) {
 //                    Toast.makeText(this, "GAME OVER", Toast.LENGTH_SHORT).show();
                     showFinalScoreDialog(player, null);
@@ -216,11 +218,11 @@ public class MainActivity extends AppCompatActivity implements MyView.OnToggledL
         }
     }
 
-    public MyView generateRandomNumber() {
+    public CellView generateRandomNumber() {
         randomROw = r.nextInt(numRows);
         randomCol = r.nextInt(numColumns);
 
-        MyView view = myViews[randomROw * numColumns + randomCol];
+        CellView view = myViews[randomROw * numColumns + randomCol];
         if (!highlightedSquare.contains(view)) {
             return view;
         }
@@ -248,7 +250,7 @@ public class MainActivity extends AppCompatActivity implements MyView.OnToggledL
         TextView winner;
         winner = (TextView) dialog.findViewById(R.id.tvWinner);
 
-        winner.setText(TextUtils.isEmpty(text) ? ((type == MyView.PLAYER_1) ? "Player 1 LOST " : "Player 2 LOST ") + "GAME OVER!!!!!!!!!" : text);
+        winner.setText(TextUtils.isEmpty(text) ? ((type == CellView.PLAYER_1) ? "Player 1 LOST " : "Player 2 LOST ") + "GAME OVER!!!!!!!!!" : text);
 
         dialog.setCanceledOnTouchOutside(false);
         dialog.setCancelable(true);
@@ -270,7 +272,7 @@ public class MainActivity extends AppCompatActivity implements MyView.OnToggledL
             }
         }
         myGridLayout.invalidate();
-        playerNumber = MyView.PLAYER_1;
+        playerNumber = CellView.PLAYER_1;
         generateRandomIndex(playerNumber);
         onTouchRemove = false;
         gameOver = false;

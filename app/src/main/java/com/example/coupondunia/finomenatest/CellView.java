@@ -10,18 +10,18 @@ import android.view.View;
 
 import java.util.Random;
 
-public class MyView extends View {
+public class CellView extends View {
 
     public static int PLAYER_1 = 1, PLAYER_2 = 2;
     private int type = PLAYER_1;
     Random r = new Random();
 
     public interface OnToggledListener {
-        void OnToggled(MyView v, boolean touchOn, int type);
+        void OnToggled(CellView v, boolean touchOn, int type);
     }
 
     public interface OnTouchRemove {
-        void onTouchRemove(MyView v, MotionEvent touchOff, int type);
+        void onTouchRemove(CellView v, MotionEvent touchOff, int type);
     }
 
     private OnToggledListener toggledListener;
@@ -30,21 +30,21 @@ public class MyView extends View {
     int idY = 0; //default
     boolean onRandomGenerated;
 
-    public MyView(Context context, int x, int y) {
+    public CellView(Context context, int x, int y) {
         super(context);
         idX = x;
         idY = y;
     }
 
-    public MyView(Context context) {
+    public CellView(Context context) {
         this(context, null);
     }
 
-    public MyView(Context context, AttributeSet attrs) {
+    public CellView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public MyView(Context context, AttributeSet attrs, int defStyle) {
+    public CellView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
 
     }

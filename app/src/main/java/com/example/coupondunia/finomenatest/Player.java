@@ -7,5 +7,5 @@ public class Player {
     int row;
     int column;
     int count;
-    MyView view;
+    CellView view;
 }
