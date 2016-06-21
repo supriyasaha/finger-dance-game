@@ -7,7 +7,6 @@ How to nstall the application:
 <br/>3)Build the project and run it on your phone
 
 <br/>Steps to start the game:
-
 <br/>1)The game starts with two players. F1 for player 1 and F2 for player 2. F1 is represented by RED color and F2 is represented by BLUE color.
 <br/>2)First F1 will be highlighted for player 1.
 <br/>3)Then, first player would touch and hold the highlighted F1-tile. After that next random tile would automatically get highlighted for second player F2.
@@ -25,8 +24,8 @@ How to nstall the application:
 <br/>4)OnTouch of each view, have used a interface OnToggledListener to comunicate with the main thread to update the UI and generate next random row and random column for the next CellView position from the CellView array.
 <br/>5)On removal of a touch from a view, have used another interface OnTouchRemove to comunicate with the main UI thread and show messages accordingly.
 <br/>6)Each player is a Player Object with field 
-  <br/>-dx(column)
-  <br/>-dy(row)
+  <br/>-row
+  <br/>-column
   <br/>-view(current view, the player has his fingers on)
   <br/>-count(count of the number of fingers that are touching the screen at a particular time for each player).
   
