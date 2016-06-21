@@ -17,9 +17,9 @@ How to nstall the application:
 <br/>7)If each player exceeds F number of touch on the screen at a particular time then the game gets over.
 
 <br/>Code Architecture:
-<br/>1)I have used a custom view named 'CellView' that represents each cell in a n*n board.
-<br/>2)For the n*n board, a grid layout has been used, where each "CellView" is added into it dynamically.
-<br/>3)Stored each cell in a CellView array with a position dx and dy of a n*n matrix grid.
+<br/>1)I have used a custom view named 'CellView' that represents each cell in a n\*n board.
+<br/>2)For the n\*n board, a grid layout has been used, where each "CellView" is added into it dynamically.
+<br/>3)Stored each cell in a CellView array with a position dx and dy of a n\*n matrix grid.
 <br/>4)OnTouch of each view, have used a interface OnToggledListener to comunicate with the main thread to update the UI and generate next random row and random column for the next CellView position from the CellView array.
 <br/>5)On removal of a touch from a view, have used another interface OnTouchRemove to comunicate with the main UI thread and show messages accordingly.
 <br/>6)Each player is a Player Object to keep track of the player movement through each cell. So there will be two player object throughout the game.
