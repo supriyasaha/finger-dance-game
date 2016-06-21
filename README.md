@@ -2,11 +2,11 @@
 
 How to nstall the application:
 
-1)CLone the repository.
-<br/>2)open it in an android studio
+1)Clone the repository.
+<br/>2)open the project in android studio
 <br/>3)build the project and run it in your phone
 
-<br/>Steps to start with the game:
+<br/>Steps to start the game:
 
 <br/>1)The game starts with two players. F1 for player 1 and F2 for player 2. F1 is represented by RED color and F2 is represented by BLUE color.
 <br/>2)first F1 will be highlighted for player 1.
