@@ -18,7 +18,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity implements CellView.OnToggledListener, CellView.OnTouchRemove {
+public class MainActivity extends AppCompatActivity implements CellView.OnToggledListener, CellView.OnTouchRemove, ViewTreeObserver.OnGlobalLayoutListener {
 
     private GridLayout myGridLayout;
     private CellView[] myViews; //stores each CellView in position dx and dy for a n*n grid matrix. CellView[dy * numOfCol + dx].
@@ -86,35 +86,6 @@ public class MainActivity extends AppCompatActivity implements CellView.OnToggle
                 myGridLayout.addView(tView);
             }
         }
-        myGridLayout.getViewTreeObserver().addOnGlobalLayoutListener(
-                new ViewTreeObserver.OnGlobalLayoutListener() {
-
-                    @Override
-                    public void onGlobalLayout() {
-
-                        final int MARGIN = 5;
-
-                        int pWidth = myGridLayout.getWidth();
-                        int pHeight = myGridLayout.getHeight();
-                        int numOfCol = myGridLayout.getColumnCount();
-                        int numOfRow = myGridLayout.getRowCount();
-                        int w = pWidth / numOfCol;
-                        int h = pHeight / numOfRow;
-
-                        for (int yPos = 0; yPos < numOfRow; yPos++) {
-                            for (int xPos = 0; xPos < numOfCol; xPos++) {
-                                GridLayout.LayoutParams params =
-                                        (GridLayout.LayoutParams) myViews[yPos * numOfCol + xPos].getLayoutParams();
-                                params.width = w - 2 * MARGIN;
-                                params.height = h - 2 * MARGIN;
-                                params.setMargins(MARGIN, MARGIN, MARGIN, MARGIN);
-                                myViews[yPos * numOfCol + xPos].setLayoutParams(params);
-                            }
-                        }
-
-                    }
-                });
-        generateRandomIndex(playerNumber);
 
     }
 
@@ -168,6 +139,13 @@ public class MainActivity extends AppCompatActivity implements CellView.OnToggle
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        myGridLayout.getViewTreeObserver().addOnGlobalLayoutListener(this);
+        generateRandomIndex(playerNumber);
+    }
 
     public void generateRandomIndex(int player) {
 
@@ -282,4 +260,40 @@ public class MainActivity extends AppCompatActivity implements CellView.OnToggle
         highlightedSquare.clear();
     }
 
+
+    @Override
+    public void onGlobalLayout() {
+
+        final int MARGIN = 5;
+
+        int pWidth = myGridLayout.getWidth();
+        int pHeight = myGridLayout.getHeight();
+        int numOfCol = myGridLayout.getColumnCount();
+        int numOfRow = myGridLayout.getRowCount();
+        int w = pWidth / numOfCol;
+        int h = pHeight / numOfRow;
+
+        for (int yPos = 0; yPos < numOfRow; yPos++) {
+            for (int xPos = 0; xPos < numOfCol; xPos++) {
+                GridLayout.LayoutParams params =
+                        (GridLayout.LayoutParams) myViews[yPos * numOfCol + xPos].getLayoutParams();
+                params.width = w - 2 * MARGIN;
+                params.height = h - 2 * MARGIN;
+                params.setMargins(MARGIN, MARGIN, MARGIN, MARGIN);
+                myViews[yPos * numOfCol + xPos].setLayoutParams(params);
+            }
+        }
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            myGridLayout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+        }
+        else {
+            myGridLayout.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+        }
+    }
 }
