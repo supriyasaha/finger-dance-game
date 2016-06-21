@@ -14,7 +14,7 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:text="Player1 WON!!!!!!!!!"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:textStyle="bold"/>
 
     <TextView
@@ -64,7 +64,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:textColor="@android:color/white"
         android:textStyle="bold"
         android:text="OK"/>
